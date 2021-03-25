@@ -26,13 +26,13 @@ def calculate_average_price(searching_listings):
         count = count + 1
     return(price/(len(search_listings)))
 
-postcode = str(input("Enter your postcode:"))
-num_rooms = str(input("Number of rooms:"))
-house_or_flat = str(input("House or flat?"))
+postcode = str(input("Enter your postcode: "))
+num_rooms = str(input("Number of rooms: "))
+house_or_flat = str(input("'houses'/'flats': "))
 
 search_listings = get_property_listing(postcode,num_rooms)
 average_price = calculate_average_price(search_listings)
-print(average_price)
+print("The average house price for", num_rooms, "bedroom(s) in",postcode,"is £",average_price)
 
 
 
