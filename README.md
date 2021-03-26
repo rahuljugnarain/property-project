@@ -13,8 +13,7 @@ This is a simple calculator using Zoopla's API to calculate the average house pr
 3. Click "Calculate"
 
 ## Example
-![image](https://user-images.githubusercontent.com/41843104/112622815-77cf3580-8e23-11eb-9e87-5f4dbc54fe25.png)
-
+<img src="https://user-images.githubusercontent.com/41843104/112622815-77cf3580-8e23-11eb-9e87-5f4dbc54fe25.png" width="622.5" height="408.75">
 
 # Using Streamlit
 1.  ```pip install streamlit```
