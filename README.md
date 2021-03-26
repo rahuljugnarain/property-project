@@ -31,6 +31,7 @@ This is a simple calculator using Zoopla's API to calculate the average house pr
 * Streamlit set up and working (image below)
 
 ## :black_nib: In Progress:
+* Breakdown property type (detached, semi, terraced)
 * Rental Analysis
 
 ## :books: Backlog:
