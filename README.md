@@ -1,7 +1,24 @@
-# property-project
+# Market Property Price
 
 This is a simple calculator using Zoopla's API to calculate the average house price with a specific number of rooms within a specific area (postcode).
 
+### You can find below:
+* How to Use
+* Using Streamlit
+* Progress Tracker
+
+# How to Use
+1. Enter a Postcode (e.g. SW11)
+2. Enter the number of rooms 
+3. Click "Calculate"
+
+## Example
+![image](https://user-images.githubusercontent.com/41843104/112622815-77cf3580-8e23-11eb-9e87-5f4dbc54fe25.png)
+
+
+# Using Streamlit
+1.  ```pip install streamlit```
+2.  ```streamlit run [filename]```
 
 
 # Progress Tracker
@@ -19,5 +36,3 @@ This is a simple calculator using Zoopla's API to calculate the average house pr
 * Extra optional variables
 * Comparison between selections
 
-
-![image](https://user-images.githubusercontent.com/41843104/112622815-77cf3580-8e23-11eb-9e87-5f4dbc54fe25.png)
