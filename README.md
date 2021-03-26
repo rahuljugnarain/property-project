@@ -8,6 +8,9 @@ This is a simple calculator using Zoopla's API to calculate the average house pr
 * Progress Tracker
 
 # How to Use
+main.py - initial python script version
+streamlit.py - using streamlit to create a deployable page
+
 1. Enter a Postcode (e.g. SW11)
 2. Enter the number of rooms 
 3. Click "Calculate"
