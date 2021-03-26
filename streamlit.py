@@ -1,6 +1,7 @@
 import pandas
 import numpy
 import config
+import streamlit as st
 from zoopla import Zoopla
 zoopla = Zoopla(config.api_key)
 
@@ -26,14 +27,24 @@ def calculate_average_price(searching_listings):
         count = count + 1
     return(price/(len(search_listings)))
 
+st.title('Property Prices')
 
-postcode = str(input("Enter your postcode: "))
-num_rooms = str(input("Number of rooms: "))
-house_or_flat = str(input("'houses'/'flats': "))
+postcode = st.text_input('Enter your postcode:')
+num_rooms = st.select_slider('Number of rooms:', ['1','2','3','4','5','6'])
+house_or_flat = st.selectbox('House or flat?',['houses','flats'])
 
-search_listings = get_property_listing(postcode,num_rooms)
-average_price = '{:.2f}'.format(calculate_average_price(search_listings))
-print("The average house price for", num_rooms, "bedroom(s) in",postcode,"is £",average_price)
+# postcode = str(input("Enter your postcode: "))
+# num_rooms = str(input("Number of rooms: "))
+# house_or_flat = str(input("'houses'/'flats': "))
+
+if st.button('Calculate'):
+    search_listings = get_property_listing(postcode,num_rooms)
+    average_price = '£{:.2f}'.format(calculate_average_price(search_listings))
+    st.write('The average house price is ', average_price)
+
+
+
+# print("The average house price for", num_rooms, "bedroom(s) in",postcode,"is £",average_price)
 
 
 
