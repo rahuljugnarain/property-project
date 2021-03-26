@@ -2,7 +2,7 @@
 
 This is a simple calculator using Zoopla's API to calculate the average house price with a specific number of rooms within a specific area (postcode).
 
-#Progress 
+# Progress 
 
 Completed:
 * Connected Zoopla API
