@@ -30,7 +30,7 @@ def calculate_average_price(searching_listings):
 st.title('Property Prices')
 
 postcode = st.text_input('Enter your postcode:')
-num_rooms = st.select_slider('Number of rooms:', ['1','2','3','4','5','6'])
+num_rooms = st.select_slider('Number of rooms:', ['1','2','3','4','5','6','7','8','9','10'])
 house_or_flat = st.selectbox('House or flat?',['houses','flats'])
 
 # postcode = str(input("Enter your postcode: "))
@@ -39,8 +39,8 @@ house_or_flat = st.selectbox('House or flat?',['houses','flats'])
 
 if st.button('Calculate'):
     search_listings = get_property_listing(postcode,num_rooms)
-    average_price = '£{:.2f}'.format(calculate_average_price(search_listings))
-    st.write('The average house price is ', average_price)
+    average_price = calculate_average_price(search_listings)
+    st.write('The average house price is ', '£{:.2f}'.format(average_price))
 
 
 
