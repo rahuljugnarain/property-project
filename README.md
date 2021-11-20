@@ -27,10 +27,10 @@ This is a simple calculator using Zoopla's API to calculate the average house pr
 * Connected Zoopla API
 * Returns average price in a postcode by number of rooms
 * Streamlit set up and working (image below)
+* Rental Analysis (shows rental prices for the property submitted & potential yearly yield)
 
 ## :black_nib: In Progress:
 * Breakdown property type (detached, semi, terraced)
-* Rental Analysis
 
 ## :books: Backlog:
 * Streamlit visualisation
