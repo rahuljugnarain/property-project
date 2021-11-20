@@ -5,14 +5,14 @@ import streamlit as st
 from zoopla import Zoopla
 zoopla = Zoopla(config.api_key)
 
-def get_property_listing(postcode,num_rooms):
+def get_property_listing(postcode,num_rooms, house_or_flat):
     property_listing = zoopla.property_listings({
         'area':postcode,
         'listing_status':'sale',
         'maximum_beds':num_rooms, 
         'minimum_beds':num_rooms,
         'page_number':1, 
-        'property_type':"houses",
+        'property_type':house_or_flat,
         'page_size':100, 
         'order_by':'age'
         })
@@ -27,6 +27,28 @@ def calculate_average_price(searching_listings):
         count = count + 1
     return(price/(len(search_listings)))
 
+def get_property_rental_listing(postcode,num_rooms, house_or_flat):
+    property_rental_listing = zoopla.property_listings({
+        'area':postcode,
+        'listing_status':'rent',
+        'maximum_beds':num_rooms, 
+        'minimum_beds':num_rooms,
+        'page_number':1, 
+        'property_type':house_or_flat,
+        'page_size':100, 
+        'order_by':'age'
+        })
+    rental_listings = property_rental_listing.listing
+    return rental_listings
+    
+def calculate_average_rental_price(searching_rental_listings):
+    count = 0
+    price = 0
+    while count < (len(searching_rental_listings)-1):
+        price = price + searching_rental_listings[count]['price']
+        count = count + 1
+    return(price/(len(searching_rental_listings)))
+
 st.title('Property Prices')
 
 postcode = st.text_input('Enter your postcode:')
@@ -38,9 +60,15 @@ house_or_flat = st.selectbox('House or flat?',['houses','flats'])
 # house_or_flat = str(input("'houses'/'flats': "))
 
 if st.button('Calculate'):
-    search_listings = get_property_listing(postcode,num_rooms)
-    average_price = calculate_average_price(search_listings)
+    search_listings = get_property_listing(postcode,num_rooms, house_or_flat)
+    search_rental_listings = get_property_rental_listing(postcode,num_rooms, house_or_flat)
+    average_price = float('{:.2f}'.format(calculate_average_price(search_listings)))
+    average_rental_price = float('{:.2f}'.format(calculate_average_rental_price(search_rental_listings)))
+    average_monthly_rental_price = float('{:.2f}'.format((calculate_average_rental_price(search_rental_listings)*52)/12))
+    average_rental_yield = float('{:.2f}'.format(((average_rental_price*52)/average_price)*100))
     st.write('The average house price is ', '£{:.2f}'.format(average_price))
+    st.write("The average rental price for", num_rooms, "bedroom(s) in",postcode,"is",'£{:.2f}'.format(average_rental_price), "per week or", '£{:.2f}'.format(average_monthly_rental_price), "per month")
+    st.write("Potential Yearly Rental Yield: ", '{:.2f}%'.format(average_rental_yield))
 
 
 
